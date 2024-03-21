@@ -1,0 +1,37 @@
+<form class="setup_frm repair_detail">
+  <fieldset>
+    <legend>
+      <span>{LNG_Details of} {LNG_Informer}</span>
+    </legend>
+    <p class="icon-customer">
+      <b>{LNG_Name}: </b>%NAME%
+    </p>
+    <p class="icon-phone">
+      <b>{LNG_Phone}: </b><a href="tel:%PHONE%">%PHONE%</a>
+    </p>
+  </fieldset>
+  <fieldset>
+    <legend>
+      <span>{LNG_Repair job description}</span>
+    </legend>
+    <p class="icon-file">
+      <b>{LNG_Equipment}: </b>%TOPIC%
+    </p>
+    <p class="icon-number">
+      <b>{LNG_Serial/Registration No.}: </b>&nbsp;&nbsp;&nbsp;<img style="max-width:none" src="data:image/png;base64,%PRODUCT_NO%">
+    </p>
+    <p class="icon-calendar">
+      <b>{LNG_Received date}: </b>%CREATE_DATE%
+    </p>
+    <p class="icon-tools">
+      <b>{LNG_Problems and repairs details}: </b>%JOB_DESCRIPTION%
+    </p>
+    <div class="">%FILES%</div>
+  </fieldset>
+  <fieldset>
+    <legend>
+      <span>{LNG_Transaction history}</span>
+    </legend>
+    %DETAILS%
+  </fieldset>
+</form>
