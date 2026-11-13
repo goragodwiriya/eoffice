@@ -1,0 +1,33 @@
+<div class="card-groups">
+  <header>
+    <div>
+      <h1 class="icon-car" data-i18n>Vehicles</h1>
+      <p data-i18n>Manage vehicles and their category metadata</p>
+    </div>
+    <button class="btn btn-primary icon-new" data-action="click.prevent:requestApi" data-api-url="api/car/vehicle/get" data-api-method="get" data-i18n>{LNG_Add}
+      {LNG_Vehicle}</button>
+  </header>
+  <div class="content-body">
+    <div class="tablebody">
+      <table class="table border fullwidth" data-table="vehicles" data-source="api/car/vehicles" data-default-sort="id desc" data-page-size="25" data-show-checkbox="true"
+             data-actions='{"delete":"Delete"}' data-action-url="api/car/vehicles/action" data-row-actions='{
+                "edit": {
+                  "label": "Edit",
+                  "className": "btn btn-success icon-edit"
+                }
+              }'>
+        <thead>
+          <tr>
+            <th data-field="number" data-sort="number" data-formatter="formatVehicleWithImage" data-i18n>{LNG_Car number}</th>
+            <th data-field="car_brand" data-filter="true" data-type="select" data-sort="car_brand" data-format="lookup" data-i18n>{LNG_Car brand}</th>
+            <th data-field="car_type" data-filter="true" data-type="select" data-sort="car_type" data-format="lookup" data-i18n>{LNG_Car type}</th>
+            <th data-field="seats" class="center" data-cell-class="center" data-sort="seats" data-i18n>{LNG_Seats}</th>
+            <th data-field="is_active" class="center" data-cell-class="center" data-sort="is_active"
+                data-template="<button class='btn-table-action' data-action='active' data-value='${is_active}'></button>" data-i18n>{LNG_Active}</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>

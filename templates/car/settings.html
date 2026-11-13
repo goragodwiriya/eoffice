@@ -1,0 +1,107 @@
+<div class="card-groups">
+    <header>
+        <div>
+            <h1 class="icon-cog" data-i18n>{LNG_Module Settings}</h1>
+            <p data-i18n>{LNG_Configuration module} {LNG_Car booking}</p>
+        </div>
+    </header>
+    <div class="content-body">
+        <form data-form="settings" action="api/car/settings/save" method="POST" data-ajax-submit="true" data-load-api="api/car/settings/get" data-confirm="Confirm save"
+              data-script="initCarSettings">
+            <fieldset>
+                <legend class="icon-visited" data-i18n>Display</legend>
+                <div>
+                    <label for="car_calendar_status" data-i18n>Calendar</label>
+                    <span class="form-control icon-calendar">
+                        <select id="car_calendar_status" name="car_calendar_status" data-attr="value:car_calendar_status"
+                                data-options-key="booking_statuses" multiple>
+                            <option value="" data-i18n>Please select</option>
+                        </select>
+                    </span>
+                    <div id="result_booking_calendar_status" class="comment" data-i18n>Select the status of the reservations to be displayed on the calendar. If not
+                        selected, all statuses will be displayed.</div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend class="icon-verfied" data-i18n>Approval workflow</legend>
+                <div>
+                    <label for="car_approve_level" data-i18n>Approval</label>
+                    <span class="form-control icon-valid">
+                        <select id="car_approve_level" name="car_approve_level" data-attr="value:car_approve_level">
+                            <option value="0" data-i18n>Deactivate</option>
+                            <option value="1" data-i18n>Activate</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="form-group can-approve" data-level="1">
+                    <div class="width50">
+                        <label for="car_approve_status1" data-i18n>{LNG_Approval} ({LNG_Member status})</label>
+                        <span class="form-control icon-star0">
+                            <select id="car_approve_status1" name="car_approve_status[1]" data-attr="value:car_approve_status[1]" data-options-key="status">
+                                <option value="" data-i18n>Please select</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="width50">
+                        <label for="car_approve_department1" data-i18n>Department</label>
+                        <span class="form-control icon-group">
+                            <select id="car_approve_department1" name="car_approve_department[1]" data-attr="value:car_approve_department[1]"
+                                    data-options-key="department">
+                                <option value="" data-i18n>Please select</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend class="icon-car" data-i18n>Booking rules</legend>
+                <div>
+                    <label for="car_approving" data-i18n>{LNG_Approval}/{LNG_Correct Reservation}</label>
+                    <span class="form-control icon-verfied">
+                        <select name="car_approving" id="car_approving" data-attr="value:car_approving">
+                            <option value="0" data-i18n>Before the reservation time ends</option>
+                            <option value="1" data-i18n>Before the reservation time starts</option>
+                            <option value="2" data-i18n>All the time</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <label for="car_cancellation" data-i18n>Cancellation</label>
+                    <span class="form-control icon-warning">
+                        <select name="car_cancellation" id="car_cancellation" data-attr="value:car_cancellation">
+                            <option value="0" data-i18n>Pending review or returned for correction only</option>
+                            <option value="1" data-i18n>Before the reservation date</option>
+                            <option value="3" data-i18n>Before the reservation start time</option>
+                            <option value="2" data-i18n>Before the reservation end time</option>
+                            <option value="4" data-i18n>At any time, including retrospective cancellation</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <label for="car_delete" data-i18n>{LNG_Delete a booking} ({LNG_Booker})</label>
+                    <span class="form-control icon-delete">
+                        <select id="car_delete" name="car_delete" multiple data-options-key="booking_statuses" data-attr="value:car_delete"></select>
+                    </span>
+                    <div id="result_car_delete" class="comment" data-i18n>Select the status in which the booker can delete his or her entry. Or not selected at all, it
+                        can only be deleted by the approver.</div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend class="icon-email" data-i18n>{LNG_Email}</legend>
+                <div>
+                    <label for="car_email" data-i18n>{LNG_Emailing}</label>
+                    <span class="form-control icon-email">
+                        <select id="car_email" name="car_email" data-attr="value:car_email">
+                            <option value="1" data-i18n>{LNG_Enable}</option>
+                            <option value="0" data-i18n>{LNG_Disable}</option>
+                        </select>
+                    </span>
+                    <div class="comment" data-i18n>{LNG_Send notification messages When making a transaction} ({LNG_Staff})</div>
+                </div>
+            </fieldset>
+            <fieldset class="submit">
+                <button type="submit" class="btn btn-primary icon-save" data-i18n>Save</button>
+            </fieldset>
+        </form>
+    </div>
+</div>

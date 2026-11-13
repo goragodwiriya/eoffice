@@ -1,0 +1,35 @@
+<!-- อุปกรณ์ของฉัน — ครุภัณฑ์ที่สมาชิกถือครองอยู่ (ระบบเดิม module=inventory) -->
+<div class="card-groups">
+  <header>
+    <div>
+      <h1 class="icon-product" data-i18n>{LNG_My device}</h1>
+      <p data-i18n>{LNG_Equipment that you are responsible for}</p>
+    </div>
+    <div>
+      <a class="btn btn-primary icon-tools" href="/repair-receive?id=0" data-i18n>{LNG_Get a repair}</a>
+    </div>
+  </header>
+  <div class="content-body">
+    <div class="tablebody">
+      <table class="table border fullwidth" data-table="inventoryMyDevices" data-source="api/inventory/mydevices" data-default-sort="received_date desc"
+             data-page-size="25" data-search-columns="topic,product_no">
+        <thead>
+          <tr>
+            <th data-field="topic" data-sort="topic" data-template="<span class='userinfo'><span class='usericon' style='background-image:url(${image})'></span> ${topic}</span>" data-i18n>{LNG_Equipment}</th>
+            <th data-field="product_no" data-sort="product_no"
+                data-template="<img class='inventory-barcode' src='${barcode}' alt=''><small>${product_no}</small>" data-i18n>{LNG_Serial/Registration No.}</th>
+            <th data-field="category_id" data-sort="category_id" class="center" data-cell-class="center" data-filter="true" data-type="select" data-show-all="true" data-all-value=""
+                data-template="${category_id_text}" data-i18n>{LNG_Category}</th>
+            <th data-field="type_id" data-sort="type_id" class="center" data-cell-class="center" data-filter="true" data-type="select" data-show-all="true" data-all-value=""
+                data-template="${type_id_text}" data-i18n>{LNG_Type}</th>
+            <th data-field="model_id" data-sort="model_id" class="center" data-cell-class="center" data-filter="true" data-type="select" data-show-all="true" data-all-value=""
+                data-template="${model_id_text}" data-i18n>{LNG_Model}</th>
+            <th data-field="status_text" class="center" data-cell-class="center" data-i18n>{LNG_Status}</th>
+            <th data-field="received_date" data-sort="received_date" class="center" data-cell-class="center" data-format="date" data-i18n>{LNG_Received Date}</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
