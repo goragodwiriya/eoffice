@@ -1,0 +1,58 @@
+<form data-form="repairReceive" action="api/repair/receive/save" method="post" data-ajax-submit="true" data-load-api="api/repair/receive/get"
+      data-load-query-params="true" autocomplete="off">
+  <div class="card-groups">
+    <header>
+      <div>
+        <h1 class="icon-tools" data-i18n>{LNG_Repair job description}</h1>
+        <p data-i18n>{LNG_Find equipment by} {LNG_Equipment}, {LNG_Serial/Registration No.}</p>
+      </div>
+      <div>
+        <a class="btn icon-arrow-left" href="/repair-history" data-i18n>{LNG_Repair history}</a>
+      </div>
+    </header>
+    <div class="content-body">
+      <fieldset>
+        <div class="form-group">
+          <div class="width50">
+            <label for="product_no" data-i18n>{LNG_Serial/Registration No.}</label>
+            <span class="form-control icon-barcode">
+              <input type="text" id="product_no" name="product_no" data-attr="value:product_no" data-autocomplete="true" data-source="api/repair/autocomplete/find"
+                     data-min-length="2" data-max-results="20" maxlength="150" required>
+            </span>
+          </div>
+          <div class="width50">
+            <label for="topic" data-i18n>{LNG_Equipment}</label>
+            <span class="form-control icon-edit">
+              <input type="text" id="topic" name="topic" data-attr="value:topic" maxlength="64" readonly>
+            </span>
+          </div>
+        </div>
+        <div>
+          <label for="job_description" data-i18n>{LNG_Problems and repairs details}</label>
+          <span class="form-control icon-file">
+            <textarea id="job_description" name="job_description" rows="5" data-text="job_description" required></textarea>
+          </span>
+        </div>
+        <div>
+          <label for="repair" data-i18n>{LNG_Attachments}</label>
+          <span class="form-control icon-upload">
+            <input type="file" id="repair" name="repair" data-files="repair" multiple data-preview="true" data-allow-remove-existing="true"
+                   data-action-url="api/repair/receive/remove-file" data-attr="accept:accept">
+          </span>
+          <div class="comment" id="result_repair" data-text="file_comment"></div>
+        </div>
+        <div data-if="id == 0">
+          <label for="comment" data-i18n>{LNG_Comment}</label>
+          <span class="form-control icon-comments">
+            <input type="text" id="comment" name="comment" data-attr="value:comment" maxlength="255">
+          </span>
+          <div class="comment" data-i18n>{LNG_Note or additional notes}</div>
+        </div>
+      </fieldset>
+      <fieldset class="submit">
+        <button type="submit" class="btn btn-primary icon-save" data-i18n>{LNG_Save}</button>
+        <input type="hidden" name="id" data-attr="value:id">
+      </fieldset>
+    </div>
+  </div>
+</form>

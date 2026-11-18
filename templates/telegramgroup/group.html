@@ -1,0 +1,38 @@
+<form data-form="telegramGroup" data-validate="false" data-reset="false" action="api/telegramgroup/group/save" method="post" data-ajax-submit="true" autocomplete="off">
+  <fieldset>
+    <div>
+      <label for="department" data-i18n>{LNG_Department}</label>
+      <span class="form-control icon-group">
+        <select id="department" name="department" data-options-key="department" data-attr="value:department"></select>
+      </span>
+    </div>
+    <div>
+      <label for="name" data-i18n>{LNG_Name}</label>
+      <span class="form-control icon-telegram">
+        <input type="text" id="name" name="name" maxlength="100" data-attr="value:name">
+      </span>
+      <div class="comment" data-i18n>{LNG_Group name, used when no department is selected}</div>
+    </div>
+    <div>
+      <label for="chat_id" data-i18n>{LNG_Chat ID}</label>
+      <span class="form-control icon-password">
+        <input type="text" id="chat_id" name="chat_id" maxlength="50" data-attr="value:chat_id">
+      </span>
+    </div>
+    <div>
+      <label for="modules" data-i18n>{LNG_Module}</label>
+      <span class="form-control icon-modules">
+        <select id="modules" name="modules" multiple data-options-key="modules" data-attr="value:modules"></select>
+      </span>
+      <div class="comment" data-i18n>{LNG_Notifications of the selected modules are sent to this group}</div>
+    </div>
+    <div>
+      <input type="checkbox" class="switch" id="is_active" name="is_active" value="1" data-attr="checked:is_active">
+      <label for="is_active" data-i18n>{LNG_Active}</label>
+    </div>
+  </fieldset>
+  <fieldset class="submit right">
+    <button type="submit" class="btn btn-primary icon-save" data-i18n>{LNG_Save}</button>
+    <input type="hidden" name="id" data-attr="value:id">
+  </fieldset>
+</form>

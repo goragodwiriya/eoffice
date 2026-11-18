@@ -1,0 +1,58 @@
+<form data-form="repairSettings" action="api/repair/settings/save" method="post" data-ajax-submit="true" data-load-api="api/repair/settings/get" autocomplete="off">
+  <div class="card-groups">
+    <header>
+      <div>
+        <h1 class="icon-settings" data-i18n>{LNG_Module Settings} {LNG_Repair}</h1>
+        <p data-i18n>{LNG_Repair jobs}</p>
+      </div>
+    </header>
+    <div class="content-body">
+      <fieldset>
+        <div>
+          <label for="repair_first_status" data-i18n>{LNG_Initial repair status}</label>
+          <span class="form-control icon-tools">
+            <select id="repair_first_status" name="repair_first_status" data-options-key="repair_first_status" data-attr="value:repair_first_status"></select>
+          </span>
+        </div>
+        <div>
+          <label for="repair_status_success" data-i18n>{LNG_Repair status successful}</label>
+          <span class="form-control icon-star0">
+            <select id="repair_status_success" name="repair_status_success" data-options-key="repair_status_success" data-attr="value:repair_status_success"></select>
+          </span>
+        </div>
+        <div class="form-group">
+          <div class="width50">
+            <label for="repair_prefix" data-i18n>{LNG_Prefix}</label>
+            <span class="form-control icon-number">
+              <input type="text" id="repair_prefix" name="repair_prefix" data-attr="value:repair_prefix" maxlength="20">
+            </span>
+            <div class="comment" data-i18n>{LNG_Prefix, if changed The number will be counted again. You can enter %Y%M (year, month).}</div>
+          </div>
+          <div class="width50">
+            <label for="repair_job_no" data-i18n>{LNG_Job No.}</label>
+            <span class="form-control icon-number">
+              <input type="text" id="repair_job_no" name="repair_job_no" data-attr="value:repair_job_no" maxlength="20">
+            </span>
+            <div class="comment" data-i18n>{LNG_Number such as %04d (%04d means 4 digits, maximum 11 digits)}</div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend class="icon-email" data-i18n>{LNG_Email}</legend>
+        <div>
+            <label for="repair_send_mail" data-i18n>{LNG_Emailing}</label>
+            <span class="form-control icon-email">
+                <select id="repair_send_mail" name="repair_send_mail" data-attr="value:repair_send_mail">
+                    <option value="1" data-i18n>{LNG_Enable}</option>
+                    <option value="0" data-i18n>{LNG_Disable}</option>
+                </select>
+            </span>
+            <div class="comment" data-i18n>{LNG_Send notification messages When making a transaction} ({LNG_Staff})</div>
+        </div>
+      </fieldset>
+      <fieldset class="submit">
+        <button type="submit" class="btn btn-primary icon-save" data-i18n>{LNG_Save}</button>
+      </fieldset>
+    </div>
+  </div>
+</form>

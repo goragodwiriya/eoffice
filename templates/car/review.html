@@ -1,0 +1,133 @@
+<form data-form="car-review" data-load-api="api/car/review/get" data-load-query-params="true" autocomplete="off">
+    <div class="card-groups">
+        <header>
+            <div>
+                <h1 class="icon-valid" data-i18n>Review booking</h1>
+                <p data-i18n>Inspect booking details and assign the actual driver before approval</p>
+            </div>
+            <div class="header-actions">
+                <a class="btn btn-warning icon-list" href="/car-approvals" data-i18n>Car approvals</a>
+            </div>
+        </header>
+        <div class="content-body">
+            <fieldset>
+                <legend data-i18n>Requester</legend>
+                <div class="form-group">
+                    <div class="width50">
+                        <label for="member_name" data-i18n>Name</label>
+                        <span class="form-control icon-profile">
+                            <input type="text" id="member_name" data-attr="value:member_name" disabled>
+                        </span>
+                    </div>
+                    <div class="width50">
+                        <label for="department_name" data-i18n>Department</label>
+                        <span class="form-control icon-office">
+                            <input type="text" id="department_name" data-attr="value:department_name" disabled>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend data-i18n>Reservation details</legend>
+                <div class="form-group">
+                    <div class="width50">
+                        <label for="vehicle_number" data-i18n>Vehicle</label>
+                        <span class="form-control icon-car">
+                            <input type="text" id="vehicle_number" data-attr="value:vehicle_number" disabled>
+                        </span>
+                    </div>
+                    <div class="width50">
+                        <label for="travelers" data-i18n>Travelers</label>
+                        <span class="form-control icon-users">
+                            <input type="text" id="travelers" data-attr="value:travelers" disabled>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <label for="detail" data-i18n>{LNG_Purpose} / {LNG_Details}</label>
+                    <span class="form-control icon-file">
+                        <textarea id="detail" rows="4" data-text="detail" disabled></textarea>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <div class="width50">
+                        <label data-i18n>Start date</label>
+                        <span class="form-control icon-calendar"><output data-text="begin | datetime"></output></span>
+                    </div>
+                    <div class="width50">
+                        <label data-i18n>End date</label>
+                        <span class="form-control icon-calendar"><output data-text="end | datetime"></output></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="width50">
+                        <label for="driver_option_text" data-i18n>Driver option</label>
+                        <span class="form-control icon-users">
+                            <input type="text" id="driver_option_text" data-attr="value:driver_option_text" disabled>
+                        </span>
+                    </div>
+                    <div class="width50">
+                        <label for="status_text" data-i18n>Status</label>
+                        <span class="form-control icon-valid">
+                            <input type="text" id="status_text" data-attr="value:status_text" disabled>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <label for="accessories_text" data-i18n>Accessories</label>
+                    <span class="form-control icon-list">
+                        <input type="text" id="accessories_text" data-attr="value:accessories_text" disabled>
+                    </span>
+                </div>
+                <div>
+                    <label for="comment" data-i18n>Notes</label>
+                    <span class="form-control icon-comments">
+                        <textarea id="comment" rows="3" data-text="comment" disabled></textarea>
+                    </span>
+                </div>
+            </fieldset>
+            <fieldset data-attr="disabled:!canProcess&&!canCancelAction">
+                <legend data-i18n>Approval decision</legend>
+                <div>
+                    <label for="chauffeur" data-i18n>Assigned driver</label>
+                    <span class="form-control icon-users">
+                        <select id="chauffeur" name="chauffeur" data-options-key="chauffeur" data-attr="value:chauffeur">
+                            <option value="" data-i18n>Please select</option>
+                        </select>
+                    </span>
+                    <div class="comment" id="result_chauffeur" data-i18n>Approval requires self drive or an assigned driver</div>
+                </div>
+                <div>
+                    <label for="approval_reason" data-i18n>Decision note</label>
+                    <span class="form-control icon-edit">
+                        <textarea id="approval_reason" name="approval_reason" rows="4" data-text="approval_reason"></textarea>
+                    </span>
+                    <div class="comment" id="result_approval_reason" data-i18n>Required when rejecting a booking</div>
+                </div>
+                <aside class="success" data-if="!canProcess&&!canCancelAction" data-i18n>This booking has already been processed</aside>
+            </fieldset>
+            <fieldset class="submit">
+                <div data-if="canProcess">
+                    <button type="button" class="btn btn-success icon-valid" data-action="click.prevent:requestApi" data-api-url="api/car/review/approve"
+                            data-api-method="post" data-param-id="{id}" data-param-chauffeur="{chauffeur}" data-param-approval_reason="{approval_reason}"
+                            data-confirm="Confirm approval" data-loading-text="Approving" data-notify-success="true" data-attr="disabled:!canApproveAction"
+                            data-i18n>Approve</button>
+                    <button type="button" class="btn btn-danger icon-ban" data-action="click.prevent:requestApi" data-api-url="api/car/review/reject"
+                            data-api-method="post" data-param-id="{id}" data-param-chauffeur="{chauffeur}" data-param-approval_reason="{approval_reason}"
+                            data-confirm="Confirm rejection" data-loading-text="Rejecting" data-notify-success="true" data-i18n>Reject</button>
+                    <button type="button" class="btn btn-warning icon-write" data-action="click.prevent:requestApi" data-api-url="api/car/review/returnedit"
+                            data-api-method="post" data-param-id="{id}" data-param-chauffeur="{chauffeur}" data-param-approval_reason="{approval_reason}"
+                            data-confirm="Confirm return for correction" data-loading-text="Returning" data-notify-success="true" data-i18n>Return for
+                        correction</button>
+                </div>
+                <div data-if="canCancelAction">
+                    <button type="button" class="btn btn-danger icon-delete" data-action="click.prevent:requestApi" data-api-url="api/car/review/cancelofficer"
+                            data-api-method="post" data-param-id="{id}" data-param-chauffeur="{chauffeur}" data-param-approval_reason="{approval_reason}"
+                            data-confirm="Confirm cancellation by officer" data-loading-text="Cancelling" data-notify-success="true"
+                            data-attr="disabled:!canCancelAction" data-i18n>Cancel by officer</button>
+                </div>
+                <input type="hidden" name="id" data-attr="value:id">
+            </fieldset>
+        </div>
+    </div>
+</form>

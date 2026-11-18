@@ -1,0 +1,53 @@
+<div class="card-groups car-catalog-page" data-component="api" data-endpoint="api/car/catalog/lists" data-cache="true" data-cache-time="60000">
+    <header>
+        <div>
+            <h1 class="icon-car" data-i18n>All vehicles</h1>
+            <p data-i18n>Browse vehicles, and choose a car for your reservation</p>
+        </div>
+        <div class="header-actions">
+            <a class="btn btn-warning icon-list" href="/car-my-bookings" data-i18n>My bookings</a>
+            <a class="btn btn-primary icon-edit" href="/car-booking" data-i18n>Open booking form</a>
+        </div>
+    </header>
+    <div class="content-body">
+        <div class="car-catalog-layout">
+            <section class="car-catalog-grid" data-if="items && items.length > 0" data-for="item in items">
+                <template>
+                    <article class="car-catalog-card" data-attr="data-id:item.id">
+                        <a class="car-catalog-card-trigger" href="/cars" data-action="click.prevent:requestApi" data-api-url="api/car/catalog/detail"
+                           data-api-method="get" data-param-id="{id}">
+                            <div class="car-catalog-card-media" data-if="item.first_image_url">
+                                <img src="{{item.first_image_url}}" alt="{{item.number}}" loading="lazy">
+                            </div>
+                            <div class="car-catalog-card-media" data-if="!item.first_image_url">
+                                <div class="car-catalog-placeholder icon-car"></div>
+                            </div>
+                            <div class="car-catalog-card-body">
+                                <div class="car-catalog-card-head">
+                                    <div>
+                                        <h2 data-text="item.number"></h2>
+                                    </div>
+                                    <span class="car-catalog-status" data-class="is-active:item.is_active == 1"
+                                          data-text="item.is_active == 1 ? '{LNG_Available}' : '{LNG_Unavailable}'"></span>
+                                </div>
+                                <div>
+                                    <span data-text="item.type_name"></span>
+                                    <span data-text="item.seats + ' {LNG_Seats}'"></span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="car-catalog-actions">
+                            <button type="button" class="btn btn-secondary icon-search" data-action="click.prevent:requestApi" data-api-url="api/car/catalog/detail"
+                                    data-api-method="get" data-param-id="{id}" data-i18n>View details</button>
+                            <a class="btn btn-primary icon-car" data-attr="href:item.booking_url" data-i18n>Select this vehicle</a>
+                        </div>
+                    </article>
+                </template>
+            </section>
+            <div class="car-catalog-grid-empty" data-if="!items || items.length === 0">
+                <span class="icon-car"></span>
+                <p data-i18n>No vehicles are available for booking right now</p>
+            </div>
+        </div>
+    </div>
+</div>

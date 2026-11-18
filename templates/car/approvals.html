@@ -1,0 +1,39 @@
+<div class="card-groups">
+    <header>
+        <div>
+            <h1 class="icon-valid" data-i18n>Car approvals</h1>
+            <p data-i18n>Review pending and processed vehicle reservation requests</p>
+        </div>
+    </header>
+    <div class="content-body">
+        <div class="tablebody">
+            <table class="table border fullwidth" data-table="carApprovals" data-source="api/car/approvals" data-default-sort="created_at desc" data-page-size="25"
+                   data-search-columns="reason,detail" data-show-checkbox="true" data-action-url="api/car/approvals/action" data-row-actions='{
+                    "review": {
+                      "label": "Review",
+                      "className": "btn btn-warning icon-search"
+                    }
+                  }'>
+                <thead>
+                    <tr>
+                        <th data-field="member_id" data-sort="member_id" data-filter="true" data-type="select" data-show-all="true" data-all-value=""
+                            data-format="lookup" data-i18n>{LNG_Requester}</th>
+                        <th data-field="department" data-filter="true" data-type="select" data-show-all="true" data-all-value="" data-format="lookup" data-i18n>
+                            {LNG_Department}</th>
+                        <th data-field="vehicle_id" data-sort="vehicle_id" data-filter="true" data-type="select" data-show-all="true" data-all-value=""
+                            data-formatter="formatVehicleWithImage" data-i18n>{LNG_Vehicle}</th>
+                        <th data-field="detail" data-template="<span class='two_line'>${detail}</span>" data-i18n>{LNG_Detail}</th>
+                        <th data-field="begin" data-sort="begin" class="center" data-cell-class="center" data-format="datetime" data-filter="true" data-type="daterange"
+                            data-range-names="from,to" data-range-presets="today,7d,30d,thismonth,lastmonth" data-label="Date" data-i18n>{LNG_Start date}</th>
+                        <th data-field="end" data-sort="end" class="center" data-cell-class="center" data-format="datetime" data-i18n>{LNG_End date}</th>
+                        <th data-field="chauffeur" data-format="lookup" class="center" data-cell-class="center" data-i18n>{LNG_Driver}</th>
+                        <th data-field="status" data-sort="status" data-filter="true" data-type="select" data-show-all="true" data-all-value=""
+                            data-formatter="formatTableOptionStatus" class="center" data-cell-class="center" data-i18n> {LNG_Status}</th>
+                        <th data-field="reason" data-template="<span class='two_line'>${reason}</span>" data-i18n>{LNG_Reason}</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>

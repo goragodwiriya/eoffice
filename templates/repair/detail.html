@@ -1,0 +1,88 @@
+<form data-form="repairDetail" data-validate="false" data-load-api="api/repair/detail/get" data-load-query-params="true" autocomplete="off">
+  <div class="card-groups">
+    <header>
+      <div>
+        <h1 class="icon-file" data-text="'{LNG_Repair job description} ' + job_id" data-i18n></h1>
+        <p data-text="topic"></p>
+      </div>
+      <div>
+        <button type="button" class="btn btn-warning icon-tools" data-if="can_manage == 1" data-action="click.prevent:requestApi" data-api-url="api/repair/action/get"
+                data-api-method="get" data-attr="data-param-id:id" data-i18n>{LNG_Update repair status}</button>
+        <a class="btn icon-print" data-attr="href:print_url" target="_blank" rel="noopener" data-i18n>{LNG_Print}</a>
+        <a class="btn icon-arrow-left" href="/repair-jobs" data-if="can_manage == 1" data-i18n>{LNG_Repair list}</a>
+        <a class="btn icon-arrow-left" href="/repair-history" data-if="can_manage != 1" data-i18n>{LNG_Repair history}</a>
+      </div>
+    </header>
+    <div class="content-body">
+      <fieldset>
+        <legend data-i18n>{LNG_Repair job description}</legend>
+        <div class="repair-detail-grid">
+          <div class="repair-detail-item">
+            <label data-i18n>{LNG_Job No.}</label>
+            <span data-text="job_id"></span>
+          </div>
+          <div class="repair-detail-item">
+            <label data-i18n>{LNG_Informer}</label>
+            <span data-text="name"></span>
+          </div>
+          <div class="repair-detail-item">
+            <label data-i18n>{LNG_Phone}</label>
+            <span data-text="phone"></span>
+          </div>
+          <div class="repair-detail-item">
+            <label data-i18n>{LNG_Received Date}</label>
+            <span data-text="created_at" data-format="datetime"></span>
+          </div>
+          <div class="repair-detail-item">
+            <label data-i18n>{LNG_Equipment}</label>
+            <span data-text="topic"></span>
+          </div>
+          <div class="repair-detail-item">
+            <label data-i18n>{LNG_Serial/Registration No.}</label>
+            <span class="repair-barcode">
+              <img data-attr="src:barcode" alt="" data-if="barcode != ''">
+            </span>
+            <span data-text="product_no"></span>
+          </div>
+        </div>
+        <div>
+          <label data-i18n>{LNG_Problems and repairs details}</label>
+          <p data-text="job_description"></p>
+        </div>
+        <div data-if="files.length > 0">
+          <label data-i18n>{LNG_Attachments}</label>
+          <div class="repair-files" data-for="file in files">
+            <a class="repair-file" data-attr="href:file.url" target="_blank" rel="noopener">
+              <img data-attr="src:file.is_image ? file.url : file.icon" alt="">
+              <span data-text="file.name"></span>
+            </a>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="grid">
+        <legend data-i18n>{LNG_Transaction history}</legend>
+        <div class="tablebody">
+          <table class="table border fullwidth" data-table="repairTimeline" data-attr="data:timeline" data-action-url="api/repair/detail/action"
+                 data-row-actions='{
+                    "delete": {
+                      "title": "Delete",
+                      "className": "btn btn-danger icon-delete",
+                      "confirm": "You want to delete ?"
+                    }
+                  }'>
+            <thead>
+              <tr>
+                <th data-field="created_at" data-format="datetime" data-i18n>{LNG_Transaction date}</th>
+                <th data-field="name" class="center" data-cell-class="center" data-i18n>{LNG_Operator}</th>
+                <th data-field="status" class="center" data-cell-class="center" data-all-value=""
+                    data-template="<span class='repair-status' style='background-color:${status_color}'>${status_text}</span>" data-i18n>{LNG_Repair status} </th>
+                <th data-field="comment" data-i18n>{LNG_Comment}</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</form>

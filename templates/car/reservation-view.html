@@ -1,0 +1,29 @@
+<!-- รายละเอียดการจองรถ (หน้าต่าง) — api/car/view · api/car/mybookings/action (view)
+     ข้อมูลล้วนจาก Car\Booking\Model::viewData() — วันเวลาดิบจัดรูปที่นี่ · อีเมลยังประกอบที่ server (Car\View\View::render) -->
+<div class="car-reservation-view">
+  <p class="center car-reservation-image" data-if="vehicle_image_url"><img data-attr="src:vehicle_image_url,alt:vehicle_number"></p>
+  <dl class="detail-list">
+    <dt class="icon-user" data-i18n>Name</dt>
+    <dd data-text="member_name"></dd>
+    <dt class="icon-group" data-if="department_name" data-i18n>Department</dt>
+    <dd data-if="department_name" data-text="department_name"></dd>
+    <dt class="icon-car" data-i18n>Vehicle</dt>
+    <dd data-text="vehicle_number"></dd>
+    <dt class="icon-file" data-if="detail" data-i18n>Detail</dt>
+    <dd class="pre-line" data-if="detail" data-text="detail"></dd>
+    <dt class="icon-comments" data-if="comment" data-i18n>Notes</dt>
+    <dd class="pre-line" data-if="comment" data-text="comment"></dd>
+    <dt class="icon-calendar" data-i18n>Reservation period</dt>
+    <dd><span data-text="begin | datetime"></span> - <span data-text="end | datetime"></span></dd>
+    <dt class="icon-group" data-i18n>Travelers</dt>
+    <dd data-text="travelers"></dd>
+    <dt class="icon-customer" data-if="driver_text" data-i18n>Driver</dt>
+    <dd data-if="driver_text" data-text="driver_text"></dd>
+    <dt class="icon-list" data-if="accessories_text" data-i18n>Accessories</dt>
+    <dd data-if="accessories_text" data-text="accessories_text"></dd>
+    <dt class="icon-star0" data-i18n>Status</dt>
+    <dd data-text="status_text"></dd>
+    <dt class="icon-download" data-if="reason" data-i18n>Reason</dt>
+    <dd class="pre-line" data-if="reason" data-text="reason"></dd>
+  </dl>
+</div>

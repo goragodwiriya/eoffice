@@ -1,0 +1,39 @@
+<!-- กลุ่ม Telegram ที่รับข้อความแจ้งเตือน (แทนกลุ่ม LINE Notify ของระบบเดิม module=lines) -->
+<div class="card-groups">
+  <header>
+    <div>
+      <h1 class="icon-telegram" data-i18n>{LNG_Telegram groups}</h1>
+      <p data-i18n>{LNG_Send notifications of each module to Telegram groups, by department}</p>
+    </div>
+    <button class="btn btn-primary icon-new" data-action="click.prevent:requestApi" data-api-url="api/telegramgroup/group/get" data-api-method="get" data-i18n>{LNG_Add}</button>
+  </header>
+  <div class="content-body">
+    <div class="tablebody">
+      <table class="table border fullwidth" data-table="telegramGroups" data-source="api/telegramgroup/groups" data-default-sort="id desc" data-page-size="25"
+             data-show-checkbox="true" data-search-columns="name,chat_id" data-actions='{"delete":"Delete"}' data-action-url="api/telegramgroup/groups/action"
+             data-row-actions='{
+                "test": {
+                  "label": "Test",
+                  "className": "btn btn-warning icon-telegram"
+                },
+                "edit": {
+                  "label": "Edit",
+                  "className": "btn btn-success icon-edit"
+                }
+              }'>
+        <thead>
+          <tr>
+            <th data-field="name" data-sort="name" data-i18n>{LNG_Name}</th>
+            <th data-field="department" data-sort="department" data-template="${department_text}" data-i18n>{LNG_Department}</th>
+            <th data-field="chat_id" data-i18n>{LNG_Chat ID}</th>
+            <th data-field="modules" data-template="${modules_text}" data-i18n>{LNG_Module}</th>
+            <th data-field="is_active" class="center" data-cell-class="center" data-sort="is_active"
+                data-template="<button class='btn-table-action' data-action='active' data-value='${is_active}'></button>" data-i18n>{LNG_Active}</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="comment" data-i18n>{LNG_Add the bot to the Telegram group, then use the group chat ID (begins with -100). The bot token is set in Telegram Settings}</div>
+  </div>
+</div>

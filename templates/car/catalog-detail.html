@@ -1,0 +1,24 @@
+<div class="car-catalog-detail-body">
+    <div class="now-slideshow car-catalog-modal-slideshow" data-if="gallery && gallery.length > 0" data-slideshow data-effect="fade" data-autoplay="false" data-height="400px"
+         data-show-indicators="true" data-show-nav="true" data-for="item in gallery">
+        <template>
+            <div class="now-slide">
+                <img src="{{item.url}}" alt="{{number}}" loading="lazy">
+            </div>
+        </template>
+    </div>
+    <div class="car-catalog-media-placeholder icon-car" data-if="!gallery || gallery.length === 0"></div>
+    <div class="car-catalog-detail-head">
+        <div>
+            <h2 data-text="number"></h2>
+            <p class="car-catalog-card-subtitle"
+               data-text="brand_name && type_name ? brand_name + ' / ' + type_name + ' / ' + seats + ' {LNG_Seats}': (brand_name || type_name || '{LNG_Vehicle}')"></p>
+        </div>
+        <span class="car-catalog-status" data-class="is-active:is_active == 1" data-text="is_active == 1 ? '{LNG_Available}' : '{LNG_Unavailable}'"></span>
+    </div>
+    <div class="car-catalog-meta" data-text="detail"></div>
+    <div class="car-catalog-actions">
+        <a class="btn btn-primary icon-car" data-attr="href:booking_url" data-i18n>Select this vehicle</a>
+        <button type="button" class="btn btn-secondary modal-close" data-i18n>Close</button>
+    </div>
+</div>

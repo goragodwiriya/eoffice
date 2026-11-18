@@ -1,0 +1,119 @@
+<form data-form="car-booking" data-load-api="api/car/booking/get" data-load-query-params="true" data-ajax-submit="true" action="api/car/booking/save" method="post"
+      autocomplete="off">
+    <div class="card-groups">
+        <header>
+            <div>
+                <h1 class="icon-edit">
+                    <span data-i18n>Book a car</span>
+                    <span data-if="id > 0" data-class="'status' + status" data-text="status_text"></span>
+                </h1>
+                <p data-i18n>Create or update a vehicle reservation request</p>
+            </div>
+            <div class="header-actions">
+                <a class="btn btn-info icon-car" href="/cars" data-i18n>All vehicles</a>
+                <a class="btn btn-warning icon-list" href="/car-my-bookings" data-i18n>My bookings</a>
+            </div>
+        </header>
+        <div class="content-body">
+            <fieldset>
+                <legend data-i18n>Requester</legend>
+                <div class="form-group">
+                    <div class="width50">
+                        <label for="member_name" data-i18n>Name</label>
+                        <span class="form-control icon-profile">
+                            <input type="text" id="member_name" data-attr="value:member_name" disabled>
+                        </span>
+                    </div>
+                    <div class="width50">
+                        <label for="department_name" data-i18n>Department</label>
+                        <span class="form-control icon-office">
+                            <input type="text" id="department_name" data-attr="value:department_name" disabled>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset data-attr="disabled:!canEdit">
+                <legend data-i18n>Reservation details</legend>
+                <div class="form-group">
+                    <div class="width50">
+                        <label for="vehicle_id" data-i18n>Vehicle</label>
+                        <span class="form-control icon-car">
+                            <select id="vehicle_id" name="vehicle_id" data-options-key="vehicle_id" data-attr="value:vehicle_id">
+                                <option value="" data-i18n>Please select</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="width50">
+                        <label for="travelers" data-i18n>Travelers</label>
+                        <span class="form-control icon-users">
+                            <input type="number" id="travelers" name="travelers" data-attr="value:travelers" min="1" max="99">
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <label for="detail" data-i18n>{LNG_Purpose} / {LNG_Details}</label>
+                    <span class="form-control icon-file">
+                        <textarea id="detail" name="detail" rows="4" data-text="detail"></textarea>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <div class="width50">
+                        <label for="begin_date" data-i18n>Start date</label>
+                        <span class="form-control icon-calendar">
+                            <input type="date" id="begin_date" name="begin_date" data-attr="value:begin_date">
+                        </span>
+                    </div>
+                    <div class="width50">
+                        <label for="begin_time" data-i18n>Start time</label>
+                        <span class="form-control icon-clock">
+                            <input type="time" id="begin_time" name="begin_time" data-attr="value:begin_time">
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="width50">
+                        <label for="end_date" data-i18n>End date</label>
+                        <span class="form-control icon-calendar">
+                            <input type="date" id="end_date" name="end_date" data-attr="value:end_date">
+                        </span>
+                    </div>
+                    <div class="width50">
+                        <label for="end_time" data-i18n>End time</label>
+                        <span class="form-control icon-clock">
+                            <input type="time" id="end_time" name="end_time" data-attr="value:end_time">
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <label for="car_accessories" data-i18n>Accessories</label>
+                    <span class="form-control icon-list">
+                        <select id="car_accessories" name="car_accessories" multiple data-options-key="car_accessories" data-attr="value:car_accessories"></select>
+                    </span>
+                    <div class="comment" id="result_car_accessories" data-i18n>Select one or more required accessories</div>
+                </div>
+                <div>
+                    <label for="comment" data-i18n>Notes</label>
+                    <span class="form-control icon-comments">
+                        <textarea id="comment" name="comment" rows="3" data-text="comment"></textarea>
+                    </span>
+                </div>
+            </fieldset>
+            <fieldset data-attr="disabled:!canEdit">
+                <legend data-i18n>Driver</legend>
+                <div>
+                    <label for="chauffeur" data-i18n>Driver option</label>
+                    <span class="form-control icon-valid">
+                        <select id="chauffeur" name="chauffeur" data-options-key="chauffeur" data-attr="value:chauffeur">
+                            <option value="" data-i18n>Please select</option>
+                        </select>
+                    </span>
+                </div>
+                <aside class="error" data-if="!canEdit" data-i18n>This booking has already been processed and cannot be changed</aside>
+            </fieldset>
+            <fieldset class="submit">
+                <button type="submit" class="btn btn-primary icon-save" data-attr="disabled:!canEdit" data-i18n>Save</button>
+                <input type="hidden" name="id" data-attr="value:id">
+            </fieldset>
+        </div>
+    </div>
+</form>

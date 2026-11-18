@@ -1,0 +1,37 @@
+<div class="card-groups">
+  <header>
+    <div>
+      <h1 class="icon-list" data-i18n>{LNG_Repair history}</h1>
+      <p data-i18n>{LNG_Repair jobs}</p>
+    </div>
+    <div>
+      <a class="btn btn-primary icon-new" href="/repair-receive?id=0" data-i18n>{LNG_Get a repair}</a>
+    </div>
+  </header>
+  <div class="content-body">
+    <div class="tablebody">
+      <table class="table border fullwidth" data-table="repairHistory" data-source="api/repair/history" data-default-sort="created_at desc" data-page-size="25"
+             data-search-columns="job_id,topic" data-action-url="api/repair/history/action" data-row-actions='{
+                "view": {
+                  "title": "Repair job description",
+                  "className": "btn btn-success icon-file"
+                }
+              }'>
+        <thead>
+          <tr>
+            <th data-field="job_id" data-sort="job_id"
+                data-template="<span class='repair-job'><b>${job_id}</b><small class='one_line' title='${topic}'>${topic}</small></span>" data-i18n>{LNG_Job No.}</th>
+            <th data-field="created_at" data-sort="created_at" class="center" data-cell-class="center" data-format="date" data-i18n>{LNG_Received Date}</th>
+            <th data-field="operator_name" class="center" data-cell-class="center" data-i18n>{LNG_Operator}</th>
+            <th data-field="status" data-sort="status" class="center" data-cell-class="center" data-filter="true" data-type="select" data-show-all="true" data-all-value=""
+                data-template="<span class='repair-status' style='background-color:${status_color}'>${status_text}</span>" data-i18n>{LNG_Repair status}</th>
+            <th data-field="comment" data-i18n>{LNG_Comment}</th>
+            <th data-field="id" class="center" data-cell-class="center"
+                data-template="<a class='btn icon-print' href='export.php?module=repair&amp;typ=receipt&amp;id=${id}' target='_blank' rel='noopener' title='{LNG_Print} {LNG_Repair receipt}'></a>"></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
